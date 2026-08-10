@@ -1,0 +1,30 @@
+uint8 MOVE=0
+uint8 GRASP=1
+uint8 RELEASE=2
+
+uint8 mode
+# Complete jaw opening in metres.
+float64 width
+# Metres per second.
+float64 speed
+# Metres per second squared.
+float64 acceleration
+# Total gripping force in newtons.
+float64 force
+bool stop_on_block
+---
+float64 width
+float64 speed
+float64 force
+bool stalled
+bool reached_goal
+uint16 status_code
+string message
+---
+float64 width
+float64 speed
+float64 force
+bool stalled
+bool reached_goal
+uint16 status_code
+string message

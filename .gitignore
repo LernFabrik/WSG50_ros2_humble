@@ -1,0 +1,32 @@
+# ROS 2 / colcon build products
+build/
+install/
+log/
+build-*/
+install-*/
+log-*/
+
+# Compiler and test output
+*.o
+*.so
+*.a
+*.gcda
+*.gcno
+*.profraw
+*.profdata
+compile_commands.json
+.cache/
+.coverage
+.coverage.*
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store

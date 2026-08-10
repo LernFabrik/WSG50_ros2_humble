@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Kuka iiwa 7DoF manipulator -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wsg50">
+
+    <xacro:arg name="description_package" default="wsg50_description" />
+
+    <xacro:property name="description_package" value="$(arg description_package)"/>
+
+    <xacro:include filename="$(find ${description_package})/urdf/wsg50.urdf.xacro"/>
+
+    <!-- Used for fixing robot -->
+    <link name="world"/>
+    <gazebo reference="world">
+        <static>true</static>
+    </gazebo>
+
+    <!-- World to table -->
+    <xacro:wsg50 prefix="wsg50" parent="world" finger_length="0.023" finger_tip="-0.001">
+        <origin xyz="0 0 1" rpy="0 0 0" />
+    </xacro:wsg50>
+
+</robot>

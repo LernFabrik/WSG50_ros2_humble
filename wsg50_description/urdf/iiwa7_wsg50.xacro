@@ -9,12 +9,6 @@
     <xacro:include filename="$(find lbr_description)/urdf/iiwa7/iiwa7_description.xacro" />
     <xacro:include filename="$(find wsg50_description)/urdf/wsg50.urdf.xacro" />
 
-    <link name="world" />
-    <joint name="$(arg robot_name)_world_joint" type="fixed">
-        <parent link="world" />
-        <child link="$(arg robot_name)_link_0" />
-    </joint>
-
     <xacro:iiwa7
         robot_name="$(arg robot_name)"
         mode="$(arg mode)"
@@ -22,10 +16,8 @@
         initial_joint_positions_path="$(arg initial_joint_positions_path)" />
 
     <!-- Mechanical mounting of the WSG50 to the iiwa end-effector. -->
-    <xacro:wsg50 prefix="wsg50" parent="$(arg robot_name)_link_ee"
-                 finger_length="0.023" finger_tip="-0.001">
-        <!-- 50 degrees around the iiwa end-effector Z axis. -->
-        <origin xyz="0 0 0" rpy="0 0 0.872665" />
+    <xacro:wsg50 prefix="wsg50" parent="$(arg robot_name)_link_ee">
+        <origin xyz="0 0 0.011" rpy="0 0 0.8730137" />
     </xacro:wsg50>
 
 </robot>

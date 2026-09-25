@@ -15,7 +15,7 @@
     </gazebo>
 
     <!-- World to table -->
-    <xacro:wsg50 prefix="wsg50" parent="world" finger_length="0.023" finger_tip="-0.001">
+    <xacro:wsg50 prefix="wsg50" parent="world">
         <origin xyz="0 0 1" rpy="0 0 0" />
     </xacro:wsg50>
 

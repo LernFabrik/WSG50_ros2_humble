@@ -294,6 +294,8 @@ bool Transport::connect_socket()
     state_.last_status = STATUS_SUCCESS;
     state_.status_message = "connected";
     state_.updated_at = std::chrono::steady_clock::now();
+    state_.opening_updated_at = {};
+    state_.system_updated_at = {};
     ++state_.connection_generation;
   }
   connected_ = true;
@@ -471,6 +473,7 @@ void Transport::update_state(
     return;
   }
   if (id == 0x40 && payload.size() >= 6) {
+    state_.system_updated_at = std::chrono::steady_clock::now();
     state_.system_state = read_u32(payload.data() + 2);
     state_.referenced = (state_.system_state & SYSTEM_REFERENCED) != 0U;
     state_.moving = (state_.system_state & SYSTEM_MOVING) != 0U;
@@ -480,6 +483,7 @@ void Transport::update_state(
     state_.grasping_state = payload[2];
   } else if (id == 0x43 && payload.size() >= 6) {
     state_.opening_mm = decode_float(payload.data() + 2);
+    state_.opening_updated_at = std::chrono::steady_clock::now();
   } else if (id == 0x44 && payload.size() >= 6) {
     state_.speed_mm_s = decode_float(payload.data() + 2);
   } else if (id == 0x45 && payload.size() >= 6) {

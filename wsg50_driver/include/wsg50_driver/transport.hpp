@@ -76,6 +76,8 @@ struct DeviceState
   std::string status_message{"disconnected"};
   std::string last_error{"not connected"};
   std::chrono::steady_clock::time_point updated_at{};
+  std::chrono::steady_clock::time_point opening_updated_at{};
+  std::chrono::steady_clock::time_point system_updated_at{};
   uint64_t connection_generation{0};
 };
 
